@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Complaint;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ComplaintPolicy
+class CommentPolicy
 {
     use HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class ComplaintPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Complaint  $complaint
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Complaint $complaint)
+    public function view(User $user, Comment $comment)
     {
         return true ;
     }
@@ -48,12 +48,12 @@ class ComplaintPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Complaint  $complaint
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Complaint $complaint)
+    public function update(User $user, Comment $comment)
     {
-        $result = ( $complaint->admin_id == $user->id  || $user->role == "admin" || $user->id == $complaint->owner_id && $complaint->status == "pedding" ) ? true : false ;
+        $result = ( $comment->user_id == $user->id  || $user->role == "admin") ? true : false ;
         return $result ;
     }
 
@@ -61,12 +61,12 @@ class ComplaintPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Complaint  $complaint
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Complaint $complaint)
+    public function delete(User $user, Comment $comment)
     {
-        $result = ( $complaint->admin_id == $user->id  || $user->role == "admin" || $user->id == $complaint->owner_id && $complaint->status == "pedding" ) ? true : false ;
+        $result = ( $comment->user_id == $user->id  || $user->role == "admin") ? true : false ;
         return $result ;
     }
 
@@ -74,10 +74,10 @@ class ComplaintPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Complaint  $complaint
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Complaint $complaint)
+    public function restore(User $user, Comment $comment)
     {
         //
     }
@@ -86,10 +86,10 @@ class ComplaintPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Complaint  $complaint
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Complaint $complaint)
+    public function forceDelete(User $user, Comment $comment)
     {
         //
     }

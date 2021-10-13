@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComplaintStoreRequest;
+use App\Http\Requests\ComplaintUpdateRequest;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
 
@@ -14,6 +16,8 @@ class ComplaintController extends Controller
      */
     public function index()
     {
+        $this->authorize("viewAny",Complaint::class);
+        $complaints = Complaint::latest()->get();
         return view('complaints.index');
     }
 
@@ -24,7 +28,8 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize("create",Complaint::class);
+
     }
 
     /**
@@ -33,9 +38,13 @@ class ComplaintController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComplaintStoreRequest $request)
     {
-        //
+        $this->authorize("create",Complaint::class);
+
+        $data = $request->validated();
+        Complaint::create($data) ;
+        return redirect()->route("complaint.index")->with("success","Complaint stored successfully wait for approvial") ;
     }
 
     /**
@@ -46,7 +55,8 @@ class ComplaintController extends Controller
      */
     public function show(Complaint $complaint)
     {
-        //
+        $this->authorize("view",$complaint);
+
     }
 
     /**
@@ -57,7 +67,8 @@ class ComplaintController extends Controller
      */
     public function edit(Complaint $complaint)
     {
-        //
+        $this->authorize("update",$complaint);
+
     }
 
     /**
@@ -67,9 +78,12 @@ class ComplaintController extends Controller
      * @param  \App\Models\Complaint  $complaint
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Complaint $complaint)
+    public function update(ComplaintUpdateRequest $request, Complaint $complaint)
     {
-        //
+        $this->authorize("update",$complaint);
+
+        $complaint->update($request->validated());
+        return back()->with("success","complaint updated successfully");
     }
 
     /**
@@ -80,6 +94,10 @@ class ComplaintController extends Controller
      */
     public function destroy(Complaint $complaint)
     {
-        //
+        $this->authorize("delete",$complaint);
+
+        $complaint->delete() ;
+        return redirect()->route("complaint.index")->with("success","complaint deleted successfully");
+
     }
 }
