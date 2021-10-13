@@ -21,23 +21,17 @@
 
                     </ul>
                 </li>
-                <li class="nav-small-cap">--- PERSONAL</li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Complaints <span class="badge badge-pill badge-cyan ml-auto">4</span></span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{ route('complaint.index') }}">View Complaints </a></li>
-                    </ul>
+                <li class="nav-small-cap">--- Complaints ---</li>
+                <li> <a class=" waves-effect waves-dark" href="{{ route('complaint.index') }}" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">View Complaints <span class="badge badge-pill badge-cyan ml-auto"></span></span></a>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Apps</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">Calendar</a></li>
-                    </ul>
+                <li> <a class=" waves-effect waves-dark" href="{{ route('complaint.create') }}" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Add Complaint</span></a>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-email"></i><span class="hide-menu">Inbox</span></a>
+                <li> <a class=" waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-email"></i><span class="hide-menu">Inbox</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="app-email.html">Mailbox</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-palette"></i><span class="hide-menu">Ui Elements <span class="badge badge-pill badge-primary text-white ml-auto">25</span></span></a>
+                <li> <a class=" waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-palette"></i><span class="hide-menu">Ui Elements <span class="badge badge-pill badge-primary text-white ml-auto">25</span></span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="ui-cards.html">Cards</a></li>
                     </ul>

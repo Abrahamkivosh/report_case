@@ -24,7 +24,7 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-        //
+        return view('complaints.create');
     }
 
     /**
@@ -46,7 +46,7 @@ class ComplaintController extends Controller
      */
     public function show(Complaint $complaint)
     {
-        //
+        return view('complaints.show');
     }
 
     /**
