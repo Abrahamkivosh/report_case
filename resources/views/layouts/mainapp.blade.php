@@ -53,7 +53,7 @@
 
 
         {{--  footer  --}}
-        <footer class="footer">
+        <footer class="footer" style="padding-left:30%;">
             © {{ date('Y') }} Complaint Management System
         </footer>
 

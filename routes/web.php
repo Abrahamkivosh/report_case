@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComplaintController;
 
 /*
@@ -20,7 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home',function (){
-    return view('pages.dashboard');
-});
+Route::get('/home',[HomeController::class,'index'])->name('home');
+
+// Complaints
 Route::get('complaints',[ComplaintController::class, 'index'])->name('complaint.index');
+Route::get('/single',[ComplaintController::class,'show'])->name('complaint.show');
+Route::get('create',[ComplaintController::class,'create'])->name('complaint.create');
+

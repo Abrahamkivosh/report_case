@@ -30,6 +30,7 @@ class ComplaintController extends Controller
     {
         $this->authorize("create",Complaint::class);
 
+        return view('complaints.create');
     }
 
     /**
@@ -57,6 +58,7 @@ class ComplaintController extends Controller
     {
         $this->authorize("view",$complaint);
 
+        return view('complaints.show');
     }
 
     /**
