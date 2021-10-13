@@ -235,8 +235,15 @@
                         <div class="dropdown-divider"></div>
                         <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{ route('logout') }}" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
-                        <!-- text-->
+                        <div class="dropdown-divider"></div><a class="dropdown-item dropdown-footer btn btn-danger"
+                            href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </li>
                 <!-- ============================================================== -->

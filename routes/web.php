@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComplaintController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Auth::routes();
 Route::get('/home',function (){
     return view('pages.dashboard');
 });
+Route::get('complaints',[ComplaintController::class, 'index'])->name('complaint.index');
