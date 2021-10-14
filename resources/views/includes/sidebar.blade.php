@@ -22,9 +22,9 @@
                     </ul>
                 </li>
                 <li class="nav-small-cap">--- Complaints ---</li>
-                <li> <a class=" waves-effect waves-dark" href="{{ route('complaint.index') }}" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">View Complaints <span class="badge badge-pill badge-cyan ml-auto"></span></span></a>
+                <li> <a class=" waves-effect waves-dark" href="{{ route('complaints.index') }}" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">View Complaints <span class="badge badge-pill badge-cyan ml-auto"></span></span></a>
                 </li>
-                <li> <a class=" waves-effect waves-dark" href="{{ route('complaint.create') }}" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Add Complaint</span></a>
+                <li> <a class=" waves-effect waves-dark" href="{{ route('complaints.create') }}" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Add Complaint</span></a>
                 </li>
                 <li> <a class=" waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-email"></i><span class="hide-menu">Inbox</span></a>
                     <ul aria-expanded="false" class="collapse">

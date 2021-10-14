@@ -24,7 +24,11 @@ Auth::routes();
 Route::get('/home',[HomeController::class,'index'])->name('home');
 
 // Complaints
-Route::get('complaints',[ComplaintController::class, 'index'])->name('complaint.index');
-Route::get('/single',[ComplaintController::class,'show'])->name('complaint.show');
-Route::get('create',[ComplaintController::class,'create'])->name('complaint.create');
+// Route::get('complaints',[ComplaintController::class, 'index'])->name('complaint.index');
+// Route::get('/single',[ComplaintController::class,'show'])->name('complaint.show');
+// Route::get('create',[ComplaintController::class,'create'])->name('complaint.create');
+Route::middleware(['auth'])->group(function () {
+    Route::post('complaint/action/{complaint}',[ComplaintController::class,'actionTaken'])->name('complaint.action.taken');
+    Route::resource('complaints', ComplaintController::class);
+});
 

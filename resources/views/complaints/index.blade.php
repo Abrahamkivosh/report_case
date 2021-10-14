@@ -8,10 +8,10 @@
         <div class="col-md-7 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                     <li class="breadcrumb-item active">Complaints </li>
                 </ol>
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
+                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> <a href="{{ route('complaints.create') }}">Create New</a> </button>
             </div>
         </div>
     </div>
@@ -20,8 +20,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data Table</h4>
-                <h6 class="card-subtitle">Data table example</h6>
+                <h4 class="card-title">All Complaints</h4>
+                <h6 class="card-subtitle">All Complaints made</h6>
                 <div class="table-responsive m-t-40">
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
@@ -34,13 +34,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($complaints as $complaint)
                             <tr>
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>27</td>
-                                <td><a href="{{ route('complaint.show') }}" class="bt btn-sm btn-info">View</a></td>
+                                <td> {{ $complaint->owner->name }} </td>
+                                <td> {{ $complaint->title }} </td>
+                                <td>{{ $complaint->admin->name }}</td>
+                                <td>
+                                    @include(  'complaints.components.complaintStatus' , ['status' => $complaint->status]) 
+                                 </td>
+                                <td><a href="{{ route('complaints.show',$complaint)}}" class="bt btn-sm btn-info">View</a></td>
                             </tr>
+                                
+                            @endforeach
+                          
                         </tbody>
                     </table>
                 </div>

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
+use App\Models\Complaint;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,5 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
+        Complaint::factory(20)->create();
+        Comment::factory(50)->create();
     }
 }

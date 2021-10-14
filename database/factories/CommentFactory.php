@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Comment;
+use App\Models\Complaint;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
@@ -22,7 +24,9 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'body'=>$this->faker->realText(),
+            'complaint_id'=> fn()=> Complaint::all()->random() ,
+            'user_id'=>fn()=> User::all()->random() ,
         ];
     }
 }

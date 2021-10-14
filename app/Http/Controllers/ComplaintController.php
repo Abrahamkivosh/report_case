@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ComplaintStoreRequest;
-use App\Http\Requests\ComplaintUpdateRequest;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ComplaintStoreRequest;
+use App\Http\Requests\ComplaintUpdateRequest;
 
 class ComplaintController extends Controller
 {
@@ -18,7 +19,7 @@ class ComplaintController extends Controller
     {
         $this->authorize("viewAny",Complaint::class);
         $complaints = Complaint::latest()->get();
-        return view('complaints.index');
+        return view('complaints.index',compact("complaints"));
     }
 
     /**
@@ -57,8 +58,11 @@ class ComplaintController extends Controller
     public function show(Complaint $complaint)
     {
         $this->authorize("view",$complaint);
+        $ComplaintCount = $complaint->owner->complaints->count() ;
+        $CommmentCount =  $complaint->owner->comments->count();
+        
 
-        return view('complaints.show');
+        return view('complaints.show',compact("complaint","ComplaintCount","CommmentCount"));
     }
 
     /**
@@ -101,5 +105,20 @@ class ComplaintController extends Controller
         $complaint->delete() ;
         return redirect()->route("complaint.index")->with("success","complaint deleted successfully");
 
+    }
+    public function actionTaken(request $request,Complaint $complaint)
+    {
+        # Approve or decline complaint send it is done by admins only
+        if ( Auth::user()->role != "admin" ) {
+            # code...
+            abort(403,"You are not authorized to perform this action !");
+        }
+        // dd($request->status) ;
+        $action = $complaint->update([
+            'status'=>$request->status ,
+            'admin_id'=>Auth::user()->id
+        ]) ;
+        // dd($action) ;
+        return back()->with("success","Complaint status Updated") ;
     }
 }

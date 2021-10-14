@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use App\Models\Complaint;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,12 @@ class ComplaintFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title'=>$this->faker->realText(100,2),
+            'body'=>$this->faker->realText(),
+            'owner_id'=>fn()=> User::all()->random() ,
+            'admin_id'=>fn()=> User::all()->random() ,
+            'status'=>$this->faker->randomElement(['approved', 'declined','pedding']),
+            'image'=>$this->faker->imageUrl()
         ];
     }
 }
