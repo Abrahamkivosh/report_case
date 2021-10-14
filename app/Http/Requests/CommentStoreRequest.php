@@ -24,8 +24,7 @@ class CommentStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'complaint_id'=>"required",
-            "user_id"=>"required",
+           
             "body"=>"required"
         ];
     }

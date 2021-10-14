@@ -28,7 +28,11 @@
                             <tr>
                                 <th>Complanant</th>
                                 <th>Title</th>
+                               
+                                @if (auth()->user()->role == "admin")
                                 <th>Admin</th>
+                                @endif
+                                
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -38,7 +42,10 @@
                             <tr>
                                 <td> {{ $complaint->owner->name }} </td>
                                 <td> {{ $complaint->title }} </td>
-                                <td>{{ $complaint->admin->name }}</td>
+                                @if (auth()->user()->role == "admin")
+                                    <td>{{ $complaint->admin->name ?? "Null" }}</td>
+                                @endif
+                                
                                 <td>
                                     @include(  'complaints.components.complaintStatus' , ['status' => $complaint->status]) 
                                  </td>

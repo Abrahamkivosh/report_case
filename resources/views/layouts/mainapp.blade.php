@@ -29,11 +29,11 @@
 </head>
 
 <body class="skin-blue fixed-layout">
+    @include("messages")
     <div id="main-wrapper">
         {{--  navbar  --}}
         @include('includes.header')
-
-
+     
         {{--  left sidebar  --}}
         @include('includes.sidebar')
 

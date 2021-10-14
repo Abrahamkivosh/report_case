@@ -24,16 +24,17 @@
                 <p class="text-muted m-b-30 font-13"> Add Complaint </p>
                 <div class="row">
                     <div class="col-md-12 col-md-12">
-                        <form>
+                        <form class="" method="POST" action="{{ route('complaints.store') }}"  enctype="multipart/form-data" >
+                            @csrf
                             <div class="row">
                                  <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title <span style="color: red">*</span> </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Title">
+                                    <input type="text" class="form-control" name="title" id="exampleInputEmail1" placeholder="Enter Title">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Upload Image</label>
-                                    <input type="file" class="form-control" id="exampleInputEmail1" placeholder="">
+                                    <input type="file" class="form-control" name="image" id="exampleInputEmail1" placeholder="Image">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -45,7 +46,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
-                            <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                            <button type="reset" class="btn btn-inverse waves-effect waves-light">Clear form</button>
                         </form>
                     </div>
                 </div>

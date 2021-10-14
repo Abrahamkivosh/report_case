@@ -27,7 +27,6 @@ class ComplaintStoreRequest extends FormRequest
             'title'=>"required|max:300",
             'body'=>"required",
             'image'=>"nullable|image",
-            'owner_id'=>"required",
             "admin_id"=>"nullable",
             "status"=>"nullable",
         ];

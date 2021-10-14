@@ -45,8 +45,10 @@ class ComplaintController extends Controller
         $this->authorize("create",Complaint::class);
 
         $data = $request->validated();
+        $data['owner_id'] = Auth::user()->id ;
+        $this->storeImage($request,$data);
         Complaint::create($data) ;
-        return redirect()->route("complaint.index")->with("success","Complaint stored successfully wait for approvial") ;
+        return redirect()->route("complaints.index")->with("success","Complaint stored successfully wait for approvial") ;
     }
 
     /**
@@ -103,7 +105,7 @@ class ComplaintController extends Controller
         $this->authorize("delete",$complaint);
 
         $complaint->delete() ;
-        return redirect()->route("complaint.index")->with("success","complaint deleted successfully");
+        return redirect()->route("complaints.index")->with("success","complaint deleted successfully");
 
     }
     public function actionTaken(request $request,Complaint $complaint)
@@ -120,5 +122,28 @@ class ComplaintController extends Controller
         ]) ;
         // dd($action) ;
         return back()->with("success","Complaint status Updated") ;
+    }
+    public function storeImage(request $request,$data)
+    {
+        # code...
+        if (file_exists($request->file('image'))) {
+            // dd($request);
+             // Get filename with extension
+             $filenameWithExt = $request->file('image')->getClientOriginalName();
+
+             // Get just the filename
+             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+             // Get extension
+             $extension = $request->file('image')->getClientOriginalExtension();
+
+             // Create new filename
+             $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+             // Uplaod image
+             $path = $request->file('image')->storeAs('public/complaints', $filenameToStore);
+             $avatar  = $filenameToStore;
+             $data['image'] = $avatar;
+         }
     }
 }

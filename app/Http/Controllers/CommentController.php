@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentStoreRequest;
 use App\Models\Comment;
 use App\Models\Complaint;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentStoreRequest;
 
 class CommentController extends Controller
 {
@@ -40,7 +41,9 @@ class CommentController extends Controller
     public function store(CommentStoreRequest $request,Complaint $complaint)
     {
         $this->authorize("create",Comment::class);
-        $new_comment = $complaint->comments()->create($request->validated());
+        $data = $request->validated() ;
+        $data["user_id"] = Auth::user()->id ;
+        $new_comment = $complaint->comments()->create($data);
         return back()->with("success","Complaint comment send") ;
     }
 

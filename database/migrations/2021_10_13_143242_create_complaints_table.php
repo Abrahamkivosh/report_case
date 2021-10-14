@@ -16,7 +16,7 @@ class CreateComplaintsTable extends Migration
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
             $table->string("title");
-            $table->string("body");
+            $table->longText('body')->nullable();
             $table->enum('status', ['approved', 'declined','pedding'])->nullable()->default('pedding');
             $table->string("image")->nullable();
             $table->bigInteger('owner_id')->nullable();

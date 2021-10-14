@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
         Complaint::factory(20)->create();
-        Comment::factory(50)->create();
+        Comment::factory(400)->create();
     }
 }

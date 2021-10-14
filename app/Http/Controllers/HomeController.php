@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\Complaint;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard');
+        $complaintsCount = Complaint::all()->count() ;
+        $complaintsApproved = Complaint::where('status',"approved")->count() ;
+
+        $commentsCount = Comment::all()->count();
+        $usersCount = User::all()->count();
+        $complaints = Complaint::all();
+
+        return view('pages.dashboard',compact('complaintsCount','complaintsApproved','commentsCount','usersCount','complaints'));
     }
 }
