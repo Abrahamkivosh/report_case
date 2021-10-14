@@ -73,12 +73,27 @@
                                                 class="sl-date">5 minutes ago</span>
                                             <blockquote class="m-t-10">
                                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt
+                                                tempor incididunt <button type="submit"
+                                                    class="btn btn-sm btn-danger waves-effect waves-light m-r-10">Delete</button>
+
                                             </blockquote>
+
                                         </div>
                                     </div>
                                 </div>
+
                                 <hr>
+
+                                <div>
+                                    <label for="" class="card-title m-t-10">Add comment</label>
+                                    <form action="">
+                                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        <br>
+                                        <button type="submit"
+                                            class="btn btn-sm btn-success waves-effect waves-light m-r-10">Comment</button>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
