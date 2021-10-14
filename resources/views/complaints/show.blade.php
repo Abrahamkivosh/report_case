@@ -9,11 +9,9 @@
         <div class="col-md-7 align-self-center text-right">
             <div class="d-flex justify-content-end align-items-center">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Profile</li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Complaint</li>
                 </ol>
-                <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i>
-                    Create New</button>
             </div>
         </div>
     </div>
@@ -70,12 +68,27 @@
                                                 class="sl-date">5 minutes ago</span>
                                             <blockquote class="m-t-10">
                                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                tempor incididunt
+                                                tempor incididunt <button type="submit"
+                                                    class="btn btn-sm btn-danger waves-effect waves-light m-r-10">Delete</button>
+
                                             </blockquote>
+
                                         </div>
                                     </div>
                                 </div>
+
                                 <hr>
+
+                                <div>
+                                    <label for="" class="card-title m-t-10">Add comment</label>
+                                    <form action="">
+                                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                                        <br>
+                                        <button type="submit"
+                                            class="btn btn-sm btn-success waves-effect waves-light m-r-10">Comment</button>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
