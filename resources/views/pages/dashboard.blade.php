@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-12">
                         <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: {{ $complaintsCount }}px; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-12">
                         <div class="progress">
-                            <div class="progress-bar bg-cyan" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-cyan" role="progressbar" style="width: {{ $commentsCount }}%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-12">
                         <div class="progress">
-                            <div class="progress-bar bg-purple" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-purple" role="progressbar" style="width: {{ $usersCount }}%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     </div>
                     <div class="col-12">
                         <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ $complaintsApproved }}%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -127,11 +127,11 @@
                                 <tr>
                                     <th>Complanant</th>
                                     <th>Title</th>
-                                   
+
                                     @if (auth()->user()->role == "admin")
                                     <th>Admin</th>
                                     @endif
-                                    
+
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -144,15 +144,15 @@
                                     @if (auth()->user()->role == "admin")
                                         <td>{{ $complaint->admin->name ?? "Null" }}</td>
                                     @endif
-                                    
+
                                     <td>
-                                        @include(  'complaints.components.complaintStatus' , ['status' => $complaint->status]) 
+                                        @include(  'complaints.components.complaintStatus' , ['status' => $complaint->status])
                                      </td>
                                     <td><a href="{{ route('complaints.show',$complaint)}}" class="bt btn-sm btn-info">View</a></td>
                                 </tr>
-                                    
+
                                 @endforeach
-                              
+
                             </tbody>
                         </table>
                     </div>

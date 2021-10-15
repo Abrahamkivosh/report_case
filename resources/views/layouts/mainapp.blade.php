@@ -33,7 +33,7 @@
     <div id="main-wrapper">
         {{--  navbar  --}}
         @include('includes.header')
-     
+
         {{--  left sidebar  --}}
         @include('includes.sidebar')
 
@@ -73,7 +73,6 @@
     <script src=" {{ asset('/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js') }} "></script>
     <script src=" {{ asset('/assets/node_modules/toast-master/js/jquery.toast.js') }} "></script>
     <script src=" {{ asset('/assets/dist/js/dashboard1.js') }} "></script>
-    <script src=" {{ asset('/assets/node_modules/toast-master/js/jquery.toast.js') }} "></script>
     <script src="{{ asset('assets/node_modules/datatables/jquery.dataTables.min.js') }}"></script>
     <script>
         $(document).ready(function() {
