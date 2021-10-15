@@ -31,32 +31,58 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>User Name</label>
-                                <input type="text" name="name" value="{{ $user->name }}" class="form-control" placeholder="Enter Username">
+                                <input type="text" name="name" value="{{ $user->name }}" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Username">
                                     </div>
                                     <div class="form-group">
                                         <label>Email address</label>
-                                <input type="text" name="email" value="{{ $user->email }}" class="form-control" placeholder="Enter email">
+                                <input type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email">
                                     </div>
                                     <div class="form-group">
                                         <label>Image</label>
-                                <input type="file" name="image" value="{{ $user->image }}" class="form-control" placeholder="Enter email">
+                                <input type="file" name="image" value="{{ old('image') }}" class="form-control @error('image') is-invalid @enderror" placeholder="Enter email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
 
                                     <div class="form-group">
                                         <label>Phone Number</label>
-                                        <input type="text" name="phone" value="{{ $user->phone }}" class="form-control" placeholder="Enter number">
+                                        <input type="text" name="phone" value="{{ $user->phone }}" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter number">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="role">Role</label>
+                                        @if (auth()->user()->role == "admin")
+                                        <select id="role" class="form-control @error('role') is-invalid @enderror" name="role">
+                                            <option value="{{ $user->role }}" selected >{{ $user->role }}</option>
+                                            <option value="user" >User</option>
+                                            <option value="admin">Admin</option>
+                                        </select>
+                                        @else
+                                        <input id="role" class="form-control disabled " type="text" name="role" disabled value=" {{ $user->role }}" >
+
+                                        @endif
+
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label>Old Password</label>
+                                        <input type="password" name="old_password" value="" class="form-control @error('old_password') is-invalid @enderror"
+                                            placeholder="Your Old Password">
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label>{{ __('New Password') }}</label>
+                                        <input type="password" name="password" value="" class="form-control @error('password') is-invalid @enderror"
+                                            placeholder="Password">
                                     </div>
                                     <div class="form-group">
-                                        <label>Role</label>
-                                        <input type="text" name="role" value="{{ $user->role }}" class="form-control"
-                                            placeholder="Enter address">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" name="password" value="{{ $user->password }}" class="form-control"
-                                            placeholder="Enter address">
+
+                                        <label>{{ __('Confirm password') }}</label>
+                                        <input type="password" name="password_confirmation" value="" class="form-control"
+                                            placeholder="Confirm password">
                                     </div>
 
 
