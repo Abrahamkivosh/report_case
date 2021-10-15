@@ -39,8 +39,12 @@ class UserController extends Controller
             $user->name = $data["name"] ;
             $user->email = $data["email"] ;
             $user->phone = $data["phone"] ;
-            $user->role = $data["role"] ;
-            
+            if (Auth::user()->role == "admin" ) {
+
+                $user->role = $data["role"] ;
+            }
+
+
             $user->email = $data["email"] ;
 
 

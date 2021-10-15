@@ -21,6 +21,8 @@
         <div class="col-md-12">
             <div class="card card-body">
                 <h3 class="box-title m-b-0">Update Details</h3>
+
+
                 <br>
                 <div class="row">
                     <div class="col-sm-12 col-xs-12">
@@ -30,12 +32,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>User Name</label>
-                                <input type="text" name="name" value="{{ $user->name }}" class="form-control @error('name') is-invalid @enderror" placeholder="Enter Username">
+
+                                        <label>User Name <span style="color: red;">*</span></label>
+                                <input type="text" name="name" value="{{ $user->name }}" required class="form-control @error('name') is-invalid @enderror" placeholder="Enter Username">
                                     </div>
                                     <div class="form-group">
-                                        <label>Email address</label>
-                                <input type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email">
+                                        <label>Email address<span style="color: red;">*</span></label>
+                                <input type="text" name="email" value="{{ $user->email }}" required class="form-control @error('email') is-invalid @enderror" placeholder="Enter email">
                                     </div>
                                     <div class="form-group">
                                         <label>Image</label>
@@ -45,30 +48,28 @@
                                 <div class="col-md-6">
 
                                     <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input type="text" name="phone" value="{{ $user->phone }}" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter number">
+                                        <label>Phone Number<span style="color: red;">*</span></label>
+                                        <input type="text" name="phone" value="{{ $user->phone }}" required class="form-control @error('phone') is-invalid @enderror" placeholder="Enter number">
                                     </div>
 
+                                    @if (auth()->user()->role == "admin")
+
                                     <div class="form-group">
-                                        <label for="role">Role</label>
-                                        @if (auth()->user()->role == "admin")
+                                        <label for="role">Role<span style="color: red;">*</span></label>
+
                                         <select id="role" class="form-control @error('role') is-invalid @enderror" name="role">
                                             <option value="{{ $user->role }}" selected >{{ $user->role }}</option>
                                             <option value="user" >User</option>
                                             <option value="admin">Admin</option>
                                         </select>
-                                        @else
-                                        <input id="role" class="form-control disabled " type="text" name="role" disabled value=" {{ $user->role }}" >
-
-                                        @endif
 
                                     </div>
 
-
+                                    @endif
 
                                     <div class="form-group">
-                                        <label>Old Password</label>
-                                        <input type="password" name="old_password" value="" class="form-control @error('old_password') is-invalid @enderror"
+                                        <label>Old Password<span style="color: red;">*</span></label>
+                                        <input type="password" name="old_password" required value="" class="form-control @error('old_password') is-invalid @enderror"
                                             placeholder="Your Old Password">
                                     </div>
 

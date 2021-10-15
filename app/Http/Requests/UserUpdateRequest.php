@@ -28,7 +28,6 @@ class UserUpdateRequest extends FormRequest
             'name'=>"required|string",
             'email'=>"required|email",
             'phone'=>"required",
-            'role'=>"required",
             'image'=>"nullable|image",
             'old_password'=>"required",
             'password'=>"confirmed|min:8|nullable"

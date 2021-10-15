@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/assets/images/favicon.png') }}">
-    <title>Compaint | Management | System</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <link href=" {{ asset('/assets/node_modules/morrisjs/morris.css') }} " rel="stylesheet">
