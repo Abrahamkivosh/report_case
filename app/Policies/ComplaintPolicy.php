@@ -53,7 +53,7 @@ class ComplaintPolicy
      */
     public function update(User $user, Complaint $complaint)
     {
-        $result = ( $complaint->admin_id == $user->id  || $user->role == "admin" || $user->id == $complaint->owner_id && $complaint->status == "pedding" ) ? true : false ;
+        $result = ( $complaint->admin_id == $user->id  || $user->role == "admin" || $user->id == $complaint->owner_id && $complaint->status == "pending" ) ? true : false ;
         return $result ;
     }
 
@@ -66,7 +66,7 @@ class ComplaintPolicy
      */
     public function delete(User $user, Complaint $complaint)
     {
-        $result = ( $complaint->admin_id == $user->id  || $user->role == "admin" || $user->id == $complaint->owner_id && $complaint->status == "pedding" ) ? true : false ;
+        $result = ( $complaint->admin_id == $user->id  || $user->role == "admin" || $user->id == $complaint->owner_id && $complaint->status == "pending" ) ? true : false ;
         return $result ;
     }
 

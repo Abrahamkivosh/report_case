@@ -27,7 +27,7 @@ class ComplaintFactory extends Factory
             'body'=>$this->faker->realText(),
             'owner_id'=>fn()=> User::all()->random() ,
             'admin_id'=>fn()=> User::all()->random() ,
-            'status'=>$this->faker->randomElement(['approved', 'declined','pedding']),
+            'status'=>$this->faker->randomElement(['approved', 'declined','pending']),
             'image'=>$this->faker->imageUrl()
         ];
     }

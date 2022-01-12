@@ -17,7 +17,7 @@ class CreateComplaintsTable extends Migration
             $table->id();
             $table->string("title");
             $table->longText('body')->nullable();
-            $table->enum('status', ['approved', 'declined','pedding'])->nullable()->default('pedding');
+            $table->enum('status', ['approved', 'declined','pending'])->nullable()->default('pending');
             $table->string("image")->nullable();
             $table->bigInteger('owner_id')->nullable();
             $table->bigInteger('admin_id')->nullable();

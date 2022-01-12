@@ -10,7 +10,7 @@
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Profile</li>
+                        <li class="breadcrumb-item active">complaint</li>
                     </ol>
                     <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> <a
                             href="{{ route('complaints.create') }}">Create New</a> </button>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             @endcan
-            
+
             <!-- Column -->
             <!-- Column -->
             @can('delete', $complaint)
@@ -61,7 +61,7 @@
             @cannot('delete', $complaint)
             <div class="col-lg-12  col-md-12">
             @endcannot
-            
+
                 <div class="card">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs profile-tab" role="tablist">
@@ -173,7 +173,7 @@
                                         @include("complaints.components.ComplaintAction",[
                                         'route'=> route('complaint.action.taken', $complaint),
                                         'action'=>1,
-                                        'name'=>"Approved",
+                                        'name'=>"Approve",
                                         'class'=> "btn btn-sm btn-success"
                                         ])
                                     </div>
@@ -185,7 +185,7 @@
                                         'class'=>"btn btn-sm btn-warning"
                                         ])
                                     </div>
-                                        
+
                                     @endcan
                                     @can('delete', $complaint)
                                     <div class="col-md-4 float-right pl-12  ">
@@ -198,8 +198,8 @@
                                         ])
                                     @endcan
 
-                                  
-                                 
+
+
                                         {{-- <a href="{{ route('com') }}" style="" class="btn btn-sm btn-danger">Delete</a> --}}
                                     </div>
 
